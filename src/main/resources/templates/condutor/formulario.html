@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>Homologação</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+
+    <!-- Css para funcionar o Bootstrap v4.0 -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap/bootstrap.min.css}"/>
+
+    <!-- Scripts para funcionar o Bootstrap v4.0 -->
+    <script th:src="@{/js/jquery-3.2.1.slim.min.js}"></script>
+    <script th:src="@{/js/bootstrap/popper.min.js}"></script>
+    <script th:src="@{/js/bootstrap/bootstrap.min.js}"></script>
+
+    <!-- CSS para bootstrap-select -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap/bootstrap-select.min.css}">
+
+    <!-- Scripts para bootstrap-select -->
+    <script th:src="@{/js/bootstrap/bootstrap-select.min.js}"></script>
+
+    <!-- Links para funcionar a DataTable -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/datatables/datatables.min.css}"/>
+
+    <!-- Scripts para funcionar a DataTable -->
+    <script type="text/javascript" th:src="@{/js/datatables/pdfmake.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/datatables/vfs_fonts.js}"></script>
+    <script type="text/javascript" th:src="@{/js/datatables/datatables.min.js}"></script>
+
+</head>
+   <body>
+      <div class="row">
+         <div class="col-sm-12  btn-table">
+            <form th:action="@{/condutor/salvar}" th:object="${condutor}" method="post">
+               <p class="h1">Cadastro Condutor</p>
+               
+                <div class="form-group">
+                <label for="inputTipo_user">Tipo Usuario</label>
+                <select>        
+                    <option value="" selected="selected">Selecione...</option>
+                    <option value="Associado">Associado</option>
+                    <option value="PrestadorDeServico">Prestador de Serviço</option>
+                	<option value="Outros" >Outros</option>
+                </select>
+                <span th:if="${#fields.hasErrors('tipo_user')}" th:errors="${tipo_user}"
+                      class="badge badge-danger">erro</span>
+            </div>
+               
+               <div class="form-group">
+                  <label for="inputNome">Nome</label>
+                  <input type="text" class="formNomer-control" id="inputNome" th:field="*{nome}" />
+                  <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" class="badge badge-danger">erro</span>
+               </div>
+			
+               <div class="form-group">
+                  <label for="inputVenc_cnh">Vencimento Cnh</label>
+                  <input type="number" class="formNomer-control" id="inputCnh" th:field="*{venc_cnh}" />
+                  <span th:if="${#fields.hasErrors('venc_cnh')}" th:errors="*{venc_cnh}" class="badge badge-danger">erro</span>
+               </div>
+               
+               <div class="form-group">
+                  <label for="inputCateg_cnh">Categoria Cnh</label>
+                  <input type="number" class="formNomer-control" id="inputCateg_cnh" th:field="*{categ_cnh}" />
+                  <span th:if="${#fields.hasErrors('categ_cnh')}" th:errors="*{categ_cnh}" class="badge badge-danger">erro</span>
+               </div>
+               
+               <div class="form-group">
+                  <label for="inputCnh">Cnh</label>
+                  <input type="number" maxlength="11" size="11" class="formNomer-control" id="inputCnh" th:field="*{cnh}" />
+                  <span th:if="${#fields.hasErrors('cnh')}" th:errors="*{cnh}" class="badge badge-danger">erro</span>
+               </div>
+               
+               <div class="form-group">
+                  <label for="inputMatricula">Matricula</label>
+                  <input type="number" class="formNomer-control" id="inputMatricula" th:field="*{matricula}" />
+                  <span th:if="${#fields.hasErrors('matricula')}" th:errors="*{matricula}" class="badge badge-danger">erro</span>
+               </div>
+               
+               
+
+               <div class="modal-footer">
+                  <button type="submit" class="btn btn-primary" >Salvar</button>
+                  <a th:href="@{/condutor}" class="btn btn-secondary">Cancelar</a>
+               </div>
+            </form>
+         </div>
+      </div>
+   </body>
+</html>
