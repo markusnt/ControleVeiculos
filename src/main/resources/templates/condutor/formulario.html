@@ -38,7 +38,7 @@
                
                 <div class="form-group">
                 <label for="inputTipo_user">Tipo Usuario</label>
-                <select>        
+                <select th:field="*{tipo_user}">        
                     <option value="" selected="selected">Selecione...</option>
                     <option value="Associado">Associado</option>
                     <option value="PrestadorDeServico">Prestador de Serviço</option>
@@ -46,7 +46,7 @@
                 </select>
                 <span th:if="${#fields.hasErrors('tipo_user')}" th:errors="${tipo_user}"
                       class="badge badge-danger">erro</span>
-            </div>
+            	</div>
                
                <div class="form-group">
                   <label for="inputNome">Nome</label>
@@ -62,13 +62,20 @@
                
                <div class="form-group">
                   <label for="inputCateg_cnh">Categoria Cnh</label>
-                  <input type="number" class="formNomer-control" id="inputCateg_cnh" th:field="*{categ_cnh}" />
+                  	<select th:field="*{categ_cnh}"> 
+                  		<option value="" selected="selected">Selecione...</option>
+                  		<option value="A">A</option>
+                  		<option value="B">B</option>
+                  		<option value="AB">AB</option>
+                  		<option value="C">C</option>
+                  		<option value="D">D</option>
+                  	</select>
                   <span th:if="${#fields.hasErrors('categ_cnh')}" th:errors="*{categ_cnh}" class="badge badge-danger">erro</span>
                </div>
                
                <div class="form-group">
                   <label for="inputCnh">Cnh</label>
-                  <input type="number" maxlength="11" size="11" class="formNomer-control" id="inputCnh" th:field="*{cnh}" />
+                  <input type="number" maxlength="11" size="11" class="formNomer-control" id="inputCnh" th:field="*{cnh}" maxlength="11"/>
                   <span th:if="${#fields.hasErrors('cnh')}" th:errors="*{cnh}" class="badge badge-danger">erro</span>
                </div>
                
@@ -76,6 +83,24 @@
                   <label for="inputMatricula">Matricula</label>
                   <input type="number" class="formNomer-control" id="inputMatricula" th:field="*{matricula}" />
                   <span th:if="${#fields.hasErrors('matricula')}" th:errors="*{matricula}" class="badge badge-danger">erro</span>
+               </div>
+               
+               <div class="form-group">
+                  <label for="inputTel">Telefone para contato</label>
+                  <input type="text" class="formNomer-control" id="inputMatricula" th:field="*{tel}" />
+                  <span th:if="${#fields.hasErrors('tel')}" th:errors="*{tel}" class="badge badge-danger">erro</span>
+               </div>
+               
+               <div class="form-group">
+                  <label for="inputEmail">Email</label>
+                  <input type="email" class="formNomer-control" id="inputEmail" th:field="*{email}" />
+                  <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="badge badge-danger">erro</span>
+               </div>
+               
+               <div class="form-group">
+                  <label for="inputRamal">Ramal</label>
+                  <input type="number" class="formNomer-control" id="inputRamal" th:field="*{ramal}" />
+                  <span th:if="${#fields.hasErrors('ramal')}" th:errors="*{ramal}" class="badge badge-danger">erro</span>
                </div>
                
                
