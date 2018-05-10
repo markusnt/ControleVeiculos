@@ -3,7 +3,7 @@
    <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <title>Homologação</title>
+    <title>Cadastro</title>
 
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
 
@@ -21,48 +21,46 @@
     <!-- Scripts para bootstrap-select -->
     <script th:src="@{/js/bootstrap/bootstrap-select.min.js}"></script>
 
-    <!-- Links para funcionar a DataTable -->
-    <link rel="stylesheet" type="text/css" th:href="@{/css/datatables/datatables.min.css}"/>
-
-    <!-- Scripts para funcionar a DataTable -->
-    <script type="text/javascript" th:src="@{/js/datatables/pdfmake.min.js}"></script>
-    <script type="text/javascript" th:src="@{/js/datatables/vfs_fonts.js}"></script>
-    <script type="text/javascript" th:src="@{/js/datatables/datatables.min.js}"></script>
-
 </head>
    <body>
-      <div class="row">
-         <div class="col-sm-12  btn-table">
-            <form th:action="@{/condutor/salvar}" th:object="${condutor}" method="post">
-               <p class="h1">Cadastro Condutor</p>
-               
-                <div class="form-group">
-                <label for="inputTipo_user">Tipo Usuario</label>
-                <select th:field="*{tipo_user}">        
+   <div class="container">
+<div class="card card-outline-secondary">
+                        <div class="card-header">
+                            <h3 class="mb-0">Cadastro Condutor</h3>
+                        </div>
+                        <div class="card-body">
+
+            				<form class="form" role="form" autocomplete="off" th:action="@{/condutor/salvar}" th:object="${condutor}" method="post">
+                                <div class="form-group row">
+                <label for="inputTipo_user" class="col-lg-3 col-form-label form-control-label">Tipo de Usuario</label>
+                <div class="col-lg-9">
+                <select th:field="*{tipo_user}" class="form-control" required="required">        
                     <option value="" selected="selected">Selecione...</option>
                     <option value="Associado">Associado</option>
                     <option value="PrestadorDeServico">Prestador de Serviço</option>
                 	<option value="Outros" >Outros</option>
                 </select>
-                <span th:if="${#fields.hasErrors('tipo_user')}" th:errors="${tipo_user}"
-                      class="badge badge-danger">erro</span>
             	</div>
+               </div>
                
-               <div class="form-group">
-                  <label for="inputNome">Nome</label>
-                  <input type="text" class="formNomer-control" id="inputNome" th:field="*{nome}" />
-                  <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" class="badge badge-danger">erro</span>
+               <div class="form-group row">
+                  <label for="inputNome" class="col-lg-3 col-form-label form-control-label">Nome</label>
+                  <div class="col-lg-9">
+                  <input type="text" class="form-control" id="inputNome" th:field="*{nome}"  pattern="\w+ \w+.*" title="Nome completo" required="required" />
+               </div>
                </div>
 			
-               <div class="form-group">
-                  <label for="inputVenc_cnh">Vencimento Cnh</label>
-                  <input type="number" class="formNomer-control" id="inputCnh" th:field="*{venc_cnh}" />
-                  <span th:if="${#fields.hasErrors('venc_cnh')}" th:errors="*{venc_cnh}" class="badge badge-danger">erro</span>
+               <div class="form-group row">
+                  <label for="inputVenc_cnh" class="col-lg-3 col-form-label form-control-label">Vencimento Cnh</label>
+                  <div class="col-lg-9">
+                  <input type="date" class="form-control" id="inputCnh" th:field="*{venc_cnh}" required="required" />
                </div>
-               
-               <div class="form-group">
-                  <label for="inputCateg_cnh">Categoria Cnh</label>
-                  	<select th:field="*{categ_cnh}"> 
+               </div>
+             
+               <div class="form-group row">
+                  <label for="inputCateg_cnh" class="col-lg-3 col-form-label form-control-label">Categoria Cnh</label>
+                  	<div class="col-lg-9">
+                  	<select th:field="*{categ_cnh}" class="form-control" required="required"> 
                   		<option value="" selected="selected">Selecione...</option>
                   		<option value="A">A</option>
                   		<option value="B">B</option>
@@ -70,47 +68,55 @@
                   		<option value="C">C</option>
                   		<option value="D">D</option>
                   	</select>
-                  <span th:if="${#fields.hasErrors('categ_cnh')}" th:errors="*{categ_cnh}" class="badge badge-danger">erro</span>
+               </div>
                </div>
                
-               <div class="form-group">
-                  <label for="inputCnh">Cnh</label>
-                  <input type="number" maxlength="11" size="11" class="formNomer-control" id="inputCnh" th:field="*{cnh}" maxlength="11"/>
-                  <span th:if="${#fields.hasErrors('cnh')}" th:errors="*{cnh}" class="badge badge-danger">erro</span>
+               <div class="form-group row">
+                  <label for="inputCnh" class="col-lg-3 col-form-label form-control-label">Cnh</label>
+                  <div class="col-lg-9">
+                  <input type="text" class="form-control" id="inputCnh" th:field="*{cnh}" maxlength="11" pattern="\d{11}" title="Numero da CNH" required="required"/>
+               </div>
                </div>
                
-               <div class="form-group">
-                  <label for="inputMatricula">Matricula</label>
-                  <input type="number" class="formNomer-control" id="inputMatricula" th:field="*{matricula}" />
-                  <span th:if="${#fields.hasErrors('matricula')}" th:errors="*{matricula}" class="badge badge-danger">erro</span>
+               <div class="form-group row">
+                  <label for="inputMatricula" class="col-lg-3 col-form-label form-control-label">Matricula</label>
+                  <div class="col-lg-9">
+                  <input type="number" class="form-control" id="inputMatricula" th:field="*{matricula}" />
+               </div>
                </div>
                
-               <div class="form-group">
-                  <label for="inputTel">Telefone para contato</label>
-                  <input type="text" class="formNomer-control" id="inputMatricula" th:field="*{tel}" />
-                  <span th:if="${#fields.hasErrors('tel')}" th:errors="*{tel}" class="badge badge-danger">erro</span>
+               <div class="form-group row">
+                  <label for="inputTel" class="col-lg-3 col-form-label form-control-label">Telefone para contato</label>
+                  <div class="col-lg-9">
+                  <input type="text" class="form-control" id="inputMatricula" th:field="*{tel}" maxlength="16" pattern="\d{11}" title="Ex: (XX) X XXXX-XXXX"  required="required" />
+               </div>
                </div>
                
-               <div class="form-group">
-                  <label for="inputEmail">Email</label>
-                  <input type="email" class="formNomer-control" id="inputEmail" th:field="*{email}" />
-                  <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="badge badge-danger">erro</span>
+               <div class="form-group row">
+                  <label for="inputEmail" class="col-lg-3 col-form-label form-control-label">Email</label>
+                  <div class="col-lg-9">
+                  <input type="email" class="form-control" id="inputEmail" th:field="*{email}" required="required"/>
+               </div>
                </div>
                
-               <div class="form-group">
-                  <label for="inputRamal">Ramal</label>
-                  <input type="number" class="formNomer-control" id="inputRamal" th:field="*{ramal}" />
-                  <span th:if="${#fields.hasErrors('ramal')}" th:errors="*{ramal}" class="badge badge-danger">erro</span>
+               <div class="form-group row">
+                  <label for="inputRamal" class="col-lg-3 col-form-label form-control-label">Ramal</label>
+                  <div class="col-lg-9">
+                  <input type="number" class="form-control" id="inputRamal" th:field="*{ramal}" />
                </div>
-               
+               </div>
                
 
-               <div class="modal-footer">
+               <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label"></label>
+                  <div class="col-lg-9">
                   <button type="submit" class="btn btn-primary" >Salvar</button>
                   <a th:href="@{/condutor}" class="btn btn-secondary">Cancelar</a>
                </div>
+               </div>
             </form>
          </div>
+      </div>
       </div>
    </body>
 </html>
