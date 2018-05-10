@@ -22,6 +22,18 @@ public class Veiculo {
 	private String placa="";
 	
 	private String placa_cid="";
+	
+	private Long cnh;
+	
+	
+
+	public Long getCnh() {
+		return cnh;
+	}
+
+	public void setCnh(Long cnh) {
+		this.cnh = cnh;
+	}
 
 	public Long getId() {
 		return id;

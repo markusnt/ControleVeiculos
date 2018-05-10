@@ -88,7 +88,7 @@
                <div class="form-group row">
                   <label for="inputTel" class="col-lg-3 col-form-label form-control-label">Telefone para contato</label>
                   <div class="col-lg-9">
-                  <input type="text" class="form-control" id="inputMatricula" th:field="*{tel}" maxlength="16" pattern="\d{11}" title="Ex: (XX) X XXXX-XXXX"  required="required" />
+                  <input type="text" class="form-control" id="inputMatricula" th:field="*{tel}" maxlength="16" pattern="\w+ \w+.*"" title="Ex:DD X XXXX-XXXX"  required="required" />
                </div>
                </div>
                

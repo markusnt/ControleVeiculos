@@ -6,6 +6,7 @@ CREATE TABLE veiculo (
 	cor	VARCHAR (250),
 	placa	VARCHAR (250),
 	placa_cid	VARCHAR (250),
+	cnh	BIGINT,
 	PRIMARY KEY (id)
 );
 

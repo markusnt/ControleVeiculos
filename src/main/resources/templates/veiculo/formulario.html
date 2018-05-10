@@ -3,7 +3,7 @@
    <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <title>Homologação</title>
+    <title>Cadastro</title>
 
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
 
@@ -20,77 +20,81 @@
 
     <!-- Scripts para bootstrap-select -->
     <script th:src="@{/js/bootstrap/bootstrap-select.min.js}"></script>
-
-    <!-- Links para funcionar a DataTable -->
-    <link rel="stylesheet" type="text/css" th:href="@{/css/datatables/datatables.min.css}"/>
-
-    <!-- Scripts para funcionar a DataTable -->
-    <script type="text/javascript" th:src="@{/js/datatables/pdfmake.min.js}"></script>
-    <script type="text/javascript" th:src="@{/js/datatables/vfs_fonts.js}"></script>
-    <script type="text/javascript" th:src="@{/js/datatables/datatables.min.js}"></script>
-
 </head>
    <body>
-      <div class="row">
-         <div class="col-sm-12  btn-table">
-            <form th:action="@{/veiculo/salvar}" th:object="${veiculo}" method="post">
-               <p class="h1">Cadastro Veiculo</p>
+   <div class="container">
+<div class="card card-outline-secondary">
+                        <div class="card-header">
+                            <h3 class="mb-0">Cadastro Condutor</h3>
+                        </div>
+                        <div class="card-body">
+            <form class="form" role="form" autocomplete="off" th:action="@{/veiculo/salvar}" th:object="${veiculo}" method="post">
                
-               <div class="form-group">
-                  <label for="inputId">Cnh</label>
-                  <input type="number" class="formNomer-control" id="inputId" th:field="*{id}" />
-                  <span th:if="${#fields.hasErrors('id')}" th:errors="*{id}" class="badge badge-danger">erro</span>
+               <div class="form-group row">
+                  <label for="inputId" class="col-lg-3 col-form-label form-control-label">Cnh</label>
+                  <div class="col-lg-9">
+                  <input type="number" class="form-control" id="inputCnh" th:field="*{cnh}" />
+               </div>
                </div>
                
                
-                <div class="form-group">
-                <label for="inputTipo_veiculo">Tipo Veiculo</label>
-                <select th:field="*{tipo_veiculo}">        
+                <div class="form-group row">
+                <label for="inputTipo_veiculo" class="col-lg-3 col-form-label form-control-label">Tipo Veiculo</label>
+                <div class="col-lg-9">
+                <select th:field="*{tipo_veiculo}" class="form-control">        
                     <option value="" selected="selected">Selecione...</option>
                     <option value="Carro">Carro</option>
                     <option value="Moto">Moto</option>
                 	<option value="Caminhao">Caminhao</option>
                 </select>
-                <span th:if="${#fields.hasErrors('tipo_veiculo')}" th:errors="${tipo_veiculo}"
-                      class="badge badge-danger">erro</span>
+            	</div>
             	</div>
                
-               <div class="form-group">
-                  <label for="inputMarca">Marca</label>
-                  <input type="text" class="formNomer-control" id="inputMarca" th:field="*{marca}" />
-                  <span th:if="${#fields.hasErrors('marca')}" th:errors="*{marca}" class="badge badge-danger">erro</span>
+               <div class="form-group row">
+                  <label for="inputMarca" class="col-lg-3 col-form-label form-control-label">Marca</label>
+                  <div class="col-lg-9">
+                  <input type="text" class="form-control" id="inputMarca" th:field="*{marca}" />
+               </div>
                </div>
 			
-               <div class="form-group">
-                  <label for="inputModelo">Modelo</label>
-                  <input type="text" class="formNomer-control" id="inputModelo" th:field="*{modelo}" />
-                  <span th:if="${#fields.hasErrors('modelo')}" th:errors="*{modelo}" class="badge badge-danger">erro</span>
+               <div class="form-group row">
+                  <label for="inputModelo" class="col-lg-3 col-form-label form-control-label">Modelo</label>
+                  <div class="col-lg-9">
+                  <input type="text" class="form-control" id="inputModelo" th:field="*{modelo}" />
+               </div>
                </div>
                
-               <div class="form-group">
-                  <label for="inputCor">Cor</label>
-                  <input type="text" clss="formNomer-control" id="inputCor" th:field="*{cor}"/>
-                  <span th:if="${#fields.hasErrors('cor')}" th:errors="*{cor}" class="badge badge-danger">erro</span>
+               <div class="form-group row">
+                  <label for="inputCor" class="col-lg-3 col-form-label form-control-label">Cor</label>
+                  <div class="col-lg-9">
+                  <input type="text" class="form-control" id="inputCor" th:field="*{cor}"/>
+               </div>
                </div>
                
-               <div class="form-group">
-                  <label for="inputPlaca">Placa do carro</label>
-                  <input type="text" class="formNomer-control" id="inputPlaca" th:field="*{placa}" />
-                  <span th:if="${#fields.hasErrors('placa')}" th:errors="*{placa}" class="badge badge-danger">erro</span>
+               <div class="form-group row">
+                  <label for="inputPlaca" class="col-lg-3 col-form-label form-control-label">Placa do carro</label>
+                  <div class="col-lg-9">
+                  <input type="text" class="form-control" id="inputPlaca" th:field="*{placa}" />
+               </div>
                </div>
                
-               <div class="form-group">
-                  <label for="inputPlaca_cid">Placa cidade</label>
-                  <input type="text" class="formNomer-control" id="inputPlaca_cid" th:field="*{placa_cid}" />
-                  <span th:if="${#fields.hasErrors('placa_cid')}" th:errors="*{placa_cid}" class="badge badge-danger">erro</span>
+               <div class="form-group row">
+                  <label for="inputPlaca_cid" class="col-lg-3 col-form-label form-control-label">Placa cidade</label>
+                  <div class="col-lg-9">
+                  <input type="text" class="form-control" id="inputPlaca_cid" th:field="*{placa_cid}" />
+               </div>
                </div>
            
-               <div class="modal-footer">
+               <div class="form-group row">
+               <label class="col-lg-3 col-form-label form-control-label"></label>
+               <div class="col-lg-9">
                   <button type="submit" class="btn btn-primary" >Salvar</button>
                   <a th:href="@{/veiculo}" class="btn btn-secondary">Cancelar</a>
                </div>
+               </div>
             </form>
          </div>
+      </div>
       </div>
    </body>
 </html>
