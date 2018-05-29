@@ -1,8 +1,11 @@
 package com.identific.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Veiculo {
@@ -91,4 +94,15 @@ public class Veiculo {
 		this.placa_cid = placa_cid;
 	}
 	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "localidade_id", referencedColumnName = "id")
+	private Localidade localidade;
+	
+	public Localidade getLocalidade() {
+		return localidade;
+	}
+
+	public void setLocalidade(Localidade localidade) {
+		this.localidade = localidade;
+	}
 }

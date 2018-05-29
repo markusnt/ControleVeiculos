@@ -106,6 +106,17 @@
                </div>
                </div>
                
+			   <div class="form-group row">
+                  <label for="inputCr" class="col-lg-3 col-form-label form-control-label" >Cr</label>
+                  <div class="col-lg-9">
+                  <select th:field="${condutor.cr}" id="inputCr" class="form-control">
+                  	<option value="" selected="selected">Selecione...</option>
+                  	<option th:each="cr : ${crs}" th:value="${cr.id}"
+                  			th:text="${cr.nome}"></option>
+                  </select>
+               </div>
+               </div>
+               
 
                <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label"></label>

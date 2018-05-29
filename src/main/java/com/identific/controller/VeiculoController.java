@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.identific.model.Condutor;
 import com.identific.model.Veiculo;
+import com.identific.repository.LocalidadeRepository;
 import com.identific.repository.VeiculoRepository;
 
 @Controller
@@ -19,9 +20,11 @@ import com.identific.repository.VeiculoRepository;
 public class VeiculoController {
 
 	private VeiculoRepository veiculoRepository;
+	private LocalidadeRepository localidadeRepository;
 	
-    public VeiculoController(VeiculoRepository veiculoRepository) {
+    public VeiculoController(VeiculoRepository veiculoRepository, LocalidadeRepository localidadeRepository) {
         this.veiculoRepository = veiculoRepository;
+        this.localidadeRepository = localidadeRepository;
     }
 	
 	@GetMapping
@@ -33,18 +36,21 @@ public class VeiculoController {
 	@GetMapping("/editar")
 	public String edit(Model model, @RequestParam Long id) {
 		model.addAttribute("veiculo", veiculoRepository.findAll());
+		model.addAttribute("localidades", localidadeRepository.findAll());
 		return "veiculo/formulario";
 	}
 	
 	@GetMapping("/novo")
 	public String novo(Model model) {
 		model.addAttribute("veiculo", new Veiculo());
+		model.addAttribute("localidades", localidadeRepository.findAll());
 		return "veiculo/formulario";
 	}
 	
 	@PostMapping("/salvar")
-	public String salvar(Veiculo veiculo, BindingResult bindingResult) {
+	public String salvar(Veiculo veiculo, BindingResult bindingResult, Model model) {
 		if(bindingResult.hasErrors()) {
+			model.addAttribute("localidades", localidadeRepository.findAll());
 			return "veiculo/formulario";
 		}
 		veiculoRepository.save(veiculo);

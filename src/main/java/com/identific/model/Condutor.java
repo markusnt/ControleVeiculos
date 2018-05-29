@@ -118,10 +118,6 @@ public class Condutor {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "cr_id", referencedColumnName = "id")
 	private Cr cr;
-	
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "localidade_id", referencedColumnName = "id")
-	private Localidade localidade;
 
 	public Veiculo getVeiculo() {
 		return veiculo;
@@ -139,12 +135,5 @@ public class Condutor {
 		this.cr = cr;
 	}
 
-	public Localidade getLocalidade() {
-		return localidade;
-	}
-
-	public void setLocalidade(Localidade localidade) {
-		this.localidade = localidade;
-	}
 	
 }

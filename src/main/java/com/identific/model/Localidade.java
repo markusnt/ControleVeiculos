@@ -8,9 +8,13 @@ public class Localidade {
 	@Id
 	private Long id;
 	
-	private String cidade="";
+	private String estacao="";
 	
-	private String uf="";
+	private String rua="";
+	
+	private Long nro;
+	
+	private String bairro="";
 
 	public Long getId() {
 		return id;
@@ -20,21 +24,38 @@ public class Localidade {
 		this.id = id;
 	}
 
-	public String getCidade() {
-		return cidade;
+	public String getEstacao() {
+		return estacao;
 	}
 
-	public void setCidade(String cidade) {
-		this.cidade = cidade;
+	public void setEstacao(String estacao) {
+		this.estacao = estacao;
 	}
 
-	public String getUf() {
-		return uf;
+	public String getRua() {
+		return rua;
 	}
 
-	public void setUf(String uf) {
-		this.uf = uf;
+	public void setRua(String rua) {
+		this.rua = rua;
+	}
+
+	public Long getNro() {
+		return nro;
+	}
+
+	public void setNro(Long nro) {
+		this.nro = nro;
+	}
+
+	public String getBairro() {
+		return bairro;
+	}
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
 	}
 	
 	
+
 }

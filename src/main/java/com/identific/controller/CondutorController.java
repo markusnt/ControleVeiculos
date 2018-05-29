@@ -24,14 +24,12 @@ public class CondutorController {
 	@Autowired
 	private CondutorRepository condutorRepository;
 	private VeiculoRepository veiculoRepository;
-	private LocalidadeRepository localidadeRepository;
 	private CrRepository crRepository;
 	
 	
-	public CondutorController(CondutorRepository condutorRepository, VeiculoRepository veiculoRepository, LocalidadeRepository localidadeRepository, CrRepository crRepository) {
+	public CondutorController(CondutorRepository condutorRepository, VeiculoRepository veiculoRepository, CrRepository crRepository) {
 		this.condutorRepository = condutorRepository;
 		this.veiculoRepository = veiculoRepository;
-		this.localidadeRepository = localidadeRepository;
 		this.crRepository = crRepository;
 	}
 	
@@ -46,7 +44,6 @@ public class CondutorController {
 	public String edit(Model model, @RequestParam Long cnh) {
 		model.addAttribute("condutor", condutorRepository.findOne(cnh));
 		model.addAttribute("veiculos", veiculoRepository.findAll());
-		model.addAttribute("localidades", localidadeRepository.findAll());
 		model.addAttribute("crs", crRepository.findAll());
 		return "condutor/formulario";
 	}
@@ -55,7 +52,6 @@ public class CondutorController {
 	public String novo(Model model) {
 		model.addAttribute("condutor", new Condutor());
 		model.addAttribute("veiculos", veiculoRepository.findAll());
-		model.addAttribute("localidades", localidadeRepository.findAll());
 		model.addAttribute("crs", crRepository.findAll());
 		return "condutor/formulario";
 	}
@@ -64,7 +60,6 @@ public class CondutorController {
 	public String salvar(Condutor condutor, BindingResult bindingResult, Model model) {
 		if(bindingResult.hasErrors()) {
 			model.addAttribute("veiculos", veiculoRepository.findAll());
-			model.addAttribute("localidades", localidadeRepository.findAll());
 			model.addAttribute("crs", crRepository.findAll());
 			return "condutor/formulario";
 		}

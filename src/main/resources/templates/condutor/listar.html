@@ -28,6 +28,8 @@
    		<a  th:href="@{/veiculo/novo}">Cadastrar Veiculo</a>
    		<a  th:href="@{/veiculo}">Lista de Veiculos</a>
    		<a  th:href="@{/condutor}">Lista de Condutores</a>
+   		<a  th:href="@{/cr}">Lista de CRs</a>
+   		<a	th:href="@{/localidade}">Lista de Estacionamentos</a>
    	</div>
    	
    	
@@ -41,6 +43,7 @@
                	<th>Contato</th>
                	<th>Email</th>
                	<th>Ramal</th>
+               	<th>Cr</th>
                	<th>Veiculos</th>
                	<th>Alteração</th>
             </tr>
@@ -53,6 +56,7 @@
               	<td th:text="${condutor.tel}"></td>
               	<td th:text="${condutor.email}"></td>
               	<td th:text="${condutor.ramal}"></td>
+              	<td th:text="${condutor.cr.nome}"></td>
               	<td th:text="${condutor.veiculo}"></td>
                	<td><a th:href="@{/condutor/editar(cnh=${condutor.cnh})}">Editar</a></td>
             </tr>
